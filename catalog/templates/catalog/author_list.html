@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Author List</h1>
+
+    {% if perms.catalog.can_mark_returned %} 
+    <p> + <a href="{% url 'author-create' %}"> Add new author </a> </p> 
+    {% endif %} 
+
+  {% if author_list %}
+    <ul>
+      {% for author in author_list %}
+      <li>
+        <a href="{{ author.get_absolute_url }}">{{ author}}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are no authors listed right now.
+    If you're seeing this text, hell hath frozen over. </p>
+  {% endif %}
+{% endblock %}

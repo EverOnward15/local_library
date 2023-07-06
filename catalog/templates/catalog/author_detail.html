@@ -1,0 +1,37 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Title: {{ author }}</h1>
+
+  <p><strong>Author:</strong> {{ author }}</a></p>
+  <!-- author detail link not yet defined -->
+
+
+ <div style="margin-left:20px;margin-top:20px">
+    <h4> Books Written </h4>
+    
+
+    {% for book in author.book_set.all %}
+      <p> <strong> {{ book.title}} </strong> <span class='{% if book.bookinstance_set.all %}text-success{% else %}text-danger{% endif %}'
+      >(Available copies: {{book.bookinstance_set.all.count}}) </span></p>           
+
+      <p>
+        {{ book.summary }}
+      </p>
+      <!-- {% if copy.status != 'a' %}
+        <p><strong>Due to be returned:</strong> {{ copy.due_back }}</p>
+      {% endif %}
+      <p><strong>Imprint:</strong> {{ copy.imprint }}</p>
+      <p class="text-muted"><strong>Id:</strong> {{ copy.id }}</p>
+    </div> -->  
+
+    {% endfor %}
+
+<!-- Added advanced Id (author.id) parameter to fetch the url of current record from the database, which the template tag will output -->
+    {% if perms.catalog.can_mark_returned %} 
+    <p> <a href="{% url 'author-update' author.id %}"> Update author record </a> <br>
+     <a href="{% url 'author-delete' author.id %}"> Delete author record </a> </p> 
+    {% endif %}
+
+  
+{% endblock %}
