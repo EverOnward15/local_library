@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-4_y%j&v&t36z3!52$5=m&_-$41pbk43jvm1-@br_f_$ixnv_#!
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
 
-ALLOWED_HOSTS = ['http://leiste15.pythonanywhere.com/', 'leiste15.pythonanywhere.com']
+ALLOWED_HOSTS = ['http://leiste15.pythonanywhere.com/', 'http://127.0.0.1:8000/', 'http://127.0.0.1']
 
 
 # Application definition
@@ -150,4 +150,4 @@ STATIC_URL = '/static/'
 # https://pypi.org/project/whitenoise/
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-CSRF_TRUSTED_ORIGINS = ['http://leiste15.pythonanywhere.com/', 'leiste15.pythonanywhere.com']
+CSRF_TRUSTED_ORIGINS = ['http://leiste15.pythonanywhere.com/', 'http://127.0.0.1:8000/', 'http://127.0.0.1']
